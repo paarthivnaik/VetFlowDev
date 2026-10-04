@@ -1,0 +1,64 @@
+{
+  "version": "v1",
+  "observedAt": "2026-10-04T22:42:00+05:30",
+  "note": "Greenfield — no existing code conventions observed yet. Conventions below are DECLARED from Master Specification and DATABASE-PROVIDER-POLICY. Will be updated as code is written.",
+
+  "naming": {
+    "source": "DECLARED",
+    "backend": {
+      "classes": "PascalCase",
+      "methods": "PascalCase",
+      "privateFields": "_camelCase",
+      "parameters": "camelCase",
+      "namespaces": "VetFlow.<Module>.<Layer>",
+      "testClasses": "<ClassName>Tests",
+      "testMethods": "<Method>_<Condition>_<ExpectedResult>"
+    },
+    "frontend": {
+      "components": "kebab-case selectors, PascalCase classes",
+      "services": "camelCase",
+      "models": "PascalCase interfaces/types"
+    },
+    "database": {
+      "tables": "snake_case (EF Core convention override)",
+      "columns": "snake_case",
+      "migrations": "YYYYMMDDHHmmss_DescriptiveName"
+    }
+  },
+
+  "codeQuality": {
+    "source": "DECLARED (VF-002)",
+    "editorconfig": "Required",
+    "nullableCSharp": "Enabled",
+    "analyzerSeverity": "Warning→Error for critical rules",
+    "typescriptStrict": true,
+    "angularLint": "eslint"
+  },
+
+  "persistenceConventions": {
+    "source": "DATABASE-PROVIDER-POLICY.md",
+    "approach": "EF Core Code First",
+    "explicitConfiguration": true,
+    "constraintsExplicit": true,
+    "indexesExplicit": true,
+    "auditFields": "CreatedAt, UpdatedAt on all tenant entities",
+    "softDelete": "AI_DETERMINED — review per entity"
+  },
+
+  "apiConventions": {
+    "source": "DECLARED (VF-005)",
+    "style": "RESTful",
+    "documentation": "OpenAPI (Swagger)",
+    "errorContract": "ProblemDetails (RFC 7807)",
+    "correlation": "X-Correlation-Id header",
+    "validation": "FluentValidation or DataAnnotations — AI_DETERMINED"
+  },
+
+  "securityConventions": {
+    "source": "DECLARED",
+    "authentication": "Keycloak OIDC — no passwords stored in VetFlow",
+    "authorization": "Server-side policy — frontend guards are UX only",
+    "tenantResolution": "From trusted identity token — never from browser input",
+    "secretManagement": "Environment variables / secret manager — never committed"
+  }
+}

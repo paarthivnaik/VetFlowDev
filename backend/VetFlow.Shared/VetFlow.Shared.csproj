@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>VetFlow.Shared</RootNamespace>
+    <AssemblyName>VetFlow.Shared</AssemblyName>
+  </PropertyGroup>
+
+  <!-- Shared kernel — cross-cutting types, result pattern, pagination,
+       guards, domain event base classes, and extension methods.
+       No references to other VetFlow projects. -->
+
+</Project>

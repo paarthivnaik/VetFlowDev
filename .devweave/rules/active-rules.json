@@ -1,0 +1,151 @@
+{
+  "version": "v1",
+  "generatedAt": "2026-10-04T22:42:00+05:30",
+  "source": "Master Specification v1.0 + DATABASE-PROVIDER-POLICY.md + Backlog v1.0",
+
+  "rules": [
+    {
+      "id": "DB-POLICY-001",
+      "scope": "REPOSITORY_DEFINED",
+      "severity": "MANDATORY",
+      "source": "DATABASE-PROVIDER-POLICY.md",
+      "version": "v1",
+      "status": "ACTIVE",
+      "title": "EF Core Code First — Provider-Neutral Domain",
+      "statement": "VetFlow uses EF Core Code First. Domain and application layers must remain database-provider independent. No provider-specific business logic is permitted.",
+      "rationale": "Supports SQLite locally and PostgreSQL in production without code changes in domain/application layers."
+    },
+    {
+      "id": "DB-POLICY-002",
+      "scope": "REPOSITORY_DEFINED",
+      "severity": "MANDATORY",
+      "source": "DATABASE-PROVIDER-POLICY.md",
+      "version": "v1",
+      "status": "ACTIVE",
+      "title": "SQLite — Local Development Only",
+      "statement": "SQLite is the default database for local developer machines only. SQLite-specific behavior must not enter business logic. SQLite passing alone does not establish production compatibility.",
+      "rationale": "Resource-efficient local dev without requiring a database server."
+    },
+    {
+      "id": "DB-POLICY-003",
+      "scope": "REPOSITORY_DEFINED",
+      "severity": "MANDATORY",
+      "source": "DATABASE-PROVIDER-POLICY.md",
+      "version": "v1",
+      "status": "ACTIVE",
+      "title": "PostgreSQL — Canonical CI/Staging/Production Provider",
+      "statement": "PostgreSQL is the canonical provider for CI, staging, and production. Persistence-related stories require PostgreSQL validation before completion.",
+      "rationale": "Architectural truth. Database-per-tenant architecture must remain intact."
+    },
+    {
+      "id": "DB-POLICY-004",
+      "scope": "REPOSITORY_DEFINED",
+      "severity": "MANDATORY",
+      "source": "DATABASE-PROVIDER-POLICY.md",
+      "version": "v1",
+      "status": "ACTIVE",
+      "title": "Explicit EF Core Configuration",
+      "statement": "Important keys, relationships, constraints, indexes, and precision must be explicitly configured in EF Core. Do not rely on convention-only configuration for business-critical constraints.",
+      "rationale": "Ensures correct schema across both SQLite and PostgreSQL providers."
+    },
+    {
+      "id": "DB-POLICY-005",
+      "scope": "REPOSITORY_DEFINED",
+      "severity": "MANDATORY",
+      "source": "DATABASE-PROVIDER-POLICY.md",
+      "version": "v1",
+      "status": "ACTIVE",
+      "title": "Database Migrations Are Version-Controlled",
+      "statement": "All EF Core migrations must be committed to version control. Migrations are never applied by bypassing EF Core tooling.",
+      "rationale": "Ensures reproducible schema evolution across all environments."
+    },
+    {
+      "id": "ARCH-POLICY-001",
+      "scope": "REPOSITORY_DEFINED",
+      "severity": "MANDATORY",
+      "source": "Master Specification v1.0",
+      "version": "v1",
+      "status": "ACTIVE",
+      "title": "Tenant Resolution From Trusted Identity Only",
+      "statement": "Tenant context must be resolved from the authenticated identity (Keycloak JWT claims) only. Never accept an arbitrary browser-supplied tenant ID as authoritative.",
+      "rationale": "Prevents cross-tenant data exposure (IDOR)."
+    },
+    {
+      "id": "ARCH-POLICY-002",
+      "scope": "REPOSITORY_DEFINED",
+      "severity": "MANDATORY",
+      "source": "Master Specification v1.0",
+      "version": "v1",
+      "status": "ACTIVE",
+      "title": "Server-Side Authorization — Frontend Guards Are UX Only",
+      "statement": "All authorization decisions must be enforced server-side. Angular route guards and permission directives are UX convenience only and must not substitute for API authorization.",
+      "rationale": "Frontend code is not a trust boundary."
+    },
+    {
+      "id": "ARCH-POLICY-003",
+      "scope": "REPOSITORY_DEFINED",
+      "severity": "MANDATORY",
+      "source": "Master Specification v1.0",
+      "version": "v1",
+      "status": "ACTIVE",
+      "title": "AI Not in V1 Transactional Path",
+      "statement": "AI suggestions must not directly finalize clinical records. Human acceptance is required for any AI-generated content. AI must not bypass normal authorization.",
+      "rationale": "Clinical safety and regulatory compliance."
+    },
+    {
+      "id": "IMPL-POLICY-001",
+      "scope": "REPOSITORY_DEFINED",
+      "severity": "MANDATORY",
+      "source": "Backlog v1.0 — Standard Antigravity Execution Contract",
+      "version": "v1",
+      "status": "ACTIVE",
+      "title": "Antigravity Execution Contract — No Unrelated Scope",
+      "statement": "During implementation, edits must be restricted strictly to the tasks and files specified in the story. Do not modify unrelated scope, perform speculative refactoring, or introduce unplanned abstractions.",
+      "rationale": "Maintains story-by-story traceability and prevents scope drift."
+    },
+    {
+      "id": "IMPL-POLICY-002",
+      "scope": "REPOSITORY_DEFINED",
+      "severity": "MANDATORY",
+      "source": "Backlog v1.0",
+      "version": "v1",
+      "status": "ACTIVE",
+      "title": "Avoid Over-DRY and Speculative Abstractions",
+      "statement": "Do not extract business logic into shared generic components prematurely. Business-specific document composition, workflow logic, and domain rules must remain in their own vertical slices. DRY applies to stable infrastructure primitives only.",
+      "rationale": "Prevents hidden coupling across business workflows. Follows vertical slice architecture."
+    },
+    {
+      "id": "IMPL-POLICY-003",
+      "scope": "REPOSITORY_DEFINED",
+      "severity": "MANDATORY",
+      "source": "Backlog v1.0",
+      "version": "v1",
+      "status": "ACTIVE",
+      "title": "Run Build and Tests — Provide Evidence",
+      "statement": "Every story implementation must run build and tests and provide concrete evidence (build output, test results, migration output) before moving to Verification.",
+      "rationale": "Deterministic verification before gate progression."
+    },
+    {
+      "id": "IMPL-POLICY-004",
+      "scope": "REPOSITORY_DEFINED",
+      "severity": "MANDATORY",
+      "source": "Master Specification v1.0",
+      "version": "v1",
+      "status": "ACTIVE",
+      "title": "Zero Secret Storage",
+      "statement": "Never write raw credentials, PATs, API keys, or passwords into .devweave/, source code, configuration files, or Git history. Use environment variables or secret managers.",
+      "rationale": "Security baseline for production SaaS."
+    },
+    {
+      "id": "IMPL-POLICY-005",
+      "scope": "REPOSITORY_DEFINED",
+      "severity": "MANDATORY",
+      "source": "Master Specification v1.0",
+      "version": "v1",
+      "status": "ACTIVE",
+      "title": "Open-Source-First",
+      "statement": "Prefer open-source libraries and tools. Do not introduce commercial/proprietary dependencies without an explicit Architecture Decision Record (ADR) and developer approval.",
+      "rationale": "Cost efficiency and vendor independence for SaaS."
+    }
+  ]
+}

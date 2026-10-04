@@ -1,0 +1,212 @@
+{
+  "version": "v1",
+  "classifiedAt": "2026-10-04T22:42:00+05:30",
+  "source": "MASTER_SPEC_v1.0 + DECLARED (no application code exists yet — greenfield)",
+  "confidence": "HIGH",
+  "note": "All technologies are DECLARED via Master Specification v1.0. No application code observed yet — repository is greenfield at INIT phase.",
+
+  "current": [
+    {
+      "id": "TECH-001",
+      "name": "C#",
+      "classification": "CURRENT",
+      "version": "13 (.NET 10)",
+      "role": "Primary backend language",
+      "evidence": "ProjectDoc/VetFlow_Master_Specification_v1.0.md",
+      "confidence": "HIGH",
+      "source": "DECLARED"
+    },
+    {
+      "id": "TECH-002",
+      "name": ".NET / ASP.NET Core",
+      "classification": "CURRENT",
+      "version": "10",
+      "role": "Backend web API host — Modular Monolith",
+      "evidence": "ProjectDoc/VetFlow_Master_Specification_v1.0.md",
+      "confidence": "HIGH",
+      "source": "DECLARED"
+    },
+    {
+      "id": "TECH-003",
+      "name": "Angular",
+      "classification": "CURRENT",
+      "version": "19+",
+      "role": "Single PWA frontend — Platform / Business / Portal routes",
+      "evidence": "ProjectDoc/VetFlow_Master_Specification_v1.0.md",
+      "confidence": "HIGH",
+      "source": "DECLARED"
+    },
+    {
+      "id": "TECH-004",
+      "name": "TypeScript",
+      "classification": "CURRENT",
+      "version": "5.x",
+      "role": "Angular application language",
+      "evidence": "ProjectDoc/VetFlow_Master_Specification_v1.0.md",
+      "confidence": "HIGH",
+      "source": "DECLARED"
+    },
+    {
+      "id": "TECH-005",
+      "name": "EF Core",
+      "classification": "CURRENT",
+      "version": "9/10",
+      "role": "ORM — Code First with explicit configuration",
+      "evidence": "ProjectDoc/DATABASE-PROVIDER-POLICY.md",
+      "confidence": "HIGH",
+      "source": "DECLARED"
+    },
+    {
+      "id": "TECH-006",
+      "name": "PostgreSQL",
+      "classification": "CURRENT",
+      "version": "16+",
+      "role": "Canonical production database — Database-per-tenant",
+      "evidence": "ProjectDoc/DATABASE-PROVIDER-POLICY.md",
+      "confidence": "HIGH",
+      "source": "DECLARED"
+    },
+    {
+      "id": "TECH-007",
+      "name": "SQLite",
+      "classification": "CURRENT",
+      "version": "3.x",
+      "role": "Local developer database — EF Core dev provider only",
+      "evidence": "ProjectDoc/DATABASE-PROVIDER-POLICY.md",
+      "confidence": "HIGH",
+      "source": "DECLARED",
+      "constraint": "MUST NOT enter business logic or production path"
+    },
+    {
+      "id": "TECH-008",
+      "name": "Keycloak",
+      "classification": "CURRENT",
+      "version": "25+",
+      "role": "OIDC/OAuth2 identity provider — authentication",
+      "evidence": "ProjectDoc/VetFlow_Master_Specification_v1.0.md",
+      "confidence": "HIGH",
+      "source": "DECLARED"
+    },
+    {
+      "id": "TECH-009",
+      "name": "MinIO",
+      "classification": "CURRENT",
+      "version": "latest",
+      "role": "S3-compatible object storage for documents",
+      "evidence": "ProjectDoc/VetFlow_Antigravity_Backlog_v1.0.md (VF-043)",
+      "confidence": "HIGH",
+      "source": "DECLARED"
+    },
+    {
+      "id": "TECH-010",
+      "name": "Docker / Docker Compose",
+      "classification": "CURRENT",
+      "version": "latest",
+      "role": "Local dev infrastructure and production containerization",
+      "evidence": "ProjectDoc/VetFlow_Antigravity_Backlog_v1.0.md (VF-003, VF-010)",
+      "confidence": "HIGH",
+      "source": "DECLARED"
+    },
+    {
+      "id": "TECH-011",
+      "name": "OpenTelemetry",
+      "classification": "CURRENT",
+      "version": "latest",
+      "role": "Traces, metrics, structured logs",
+      "evidence": "ProjectDoc/VetFlow_Antigravity_Backlog_v1.0.md (VF-008)",
+      "confidence": "HIGH",
+      "source": "DECLARED"
+    },
+    {
+      "id": "TECH-012",
+      "name": "xUnit",
+      "classification": "CURRENT",
+      "version": "2.x",
+      "role": ".NET unit and integration test framework",
+      "evidence": "ProjectDoc/VetFlow_Antigravity_Backlog_v1.0.md (VF-009)",
+      "confidence": "MEDIUM",
+      "source": "AI_DETERMINED — standard for .NET 10"
+    },
+    {
+      "id": "TECH-013",
+      "name": "Angular Material / CDK",
+      "classification": "CURRENT",
+      "version": "19+",
+      "role": "UI component library foundation",
+      "evidence": "ProjectDoc/VetFlow_Antigravity_Backlog_v1.0.md (VF-007)",
+      "confidence": "HIGH",
+      "source": "DECLARED"
+    },
+    {
+      "id": "TECH-014",
+      "name": "NuGet",
+      "classification": "CURRENT",
+      "version": "latest",
+      "role": ".NET package manager",
+      "evidence": "INFERRED from .NET 10 stack",
+      "confidence": "HIGH",
+      "source": "AI_DETERMINED"
+    },
+    {
+      "id": "TECH-015",
+      "name": "npm",
+      "classification": "CURRENT",
+      "version": "11.x",
+      "role": "Node.js / Angular package manager",
+      "evidence": "Detected: npm 11.17.0 installed on host",
+      "confidence": "HIGH",
+      "source": "OBSERVED"
+    },
+    {
+      "id": "TECH-016",
+      "name": "Transactional Outbox Pattern",
+      "classification": "CURRENT",
+      "version": "N/A",
+      "role": "Durable event publishing — no mandatory broker in V1",
+      "evidence": "ProjectDoc/VetFlow_Master_Specification_v1.0.md",
+      "confidence": "HIGH",
+      "source": "DECLARED"
+    }
+  ],
+
+  "legacy": [],
+
+  "architecturePatterns": [
+    {
+      "pattern": "Modular Monolith",
+      "classification": "CURRENT",
+      "evidence": "Master Spec v1.0",
+      "description": "Single deployable unit with internal module boundaries"
+    },
+    {
+      "pattern": "Vertical Slice Architecture",
+      "classification": "CURRENT",
+      "evidence": "Master Spec v1.0",
+      "description": "Each feature is a self-contained slice across all layers"
+    },
+    {
+      "pattern": "CQRS-lite",
+      "classification": "CURRENT",
+      "evidence": "Master Spec v1.0",
+      "description": "Separate command/query handlers; no full event sourcing in V1"
+    },
+    {
+      "pattern": "Selective DDD",
+      "classification": "CURRENT",
+      "evidence": "Master Spec v1.0",
+      "description": "DDD applied where domain complexity justifies it; not everywhere"
+    },
+    {
+      "pattern": "Database-per-Tenant",
+      "classification": "CURRENT",
+      "evidence": "Master Spec v1.0 + DATABASE-PROVIDER-POLICY.md",
+      "description": "Each tenant has an isolated PostgreSQL database in production"
+    },
+    {
+      "pattern": "PWA (Progressive Web App)",
+      "classification": "CURRENT",
+      "evidence": "Master Spec v1.0",
+      "description": "Single Angular PWA with service worker — installable, offline-capable"
+    }
+  ]
+}

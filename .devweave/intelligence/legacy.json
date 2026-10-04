@@ -1,0 +1,6 @@
+{
+  "version": "v1",
+  "classifiedAt": "2026-10-04T22:42:00+05:30",
+  "legacy": [],
+  "note": "Greenfield repository — no legacy technologies detected. No .NET Framework, AngularJS, or legacy SQL scripts observed. All technologies are CURRENT as declared by Master Specification v1.0."
+}

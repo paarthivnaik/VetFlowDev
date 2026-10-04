@@ -1,0 +1,51 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.swp
+*.swo
+.vscode/settings.json
+
+# .NET secrets
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# EF Core local dev databases
+.devdata/
+*.db
+*.db-shm
+*.db-wal
+
+# Node / Angular
+node_modules/
+dist/
+.angular/cache/
+.npm/
+npm-debug.log*
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Docker local overrides
+docker-compose.override.yml
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test coverage
+coverage/
+TestResults/
+*.coverage
+*.coveragexml
+
+# DevWeave (keep artifacts, ignore local scratch)
+.devweave/scratch/

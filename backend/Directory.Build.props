@@ -1,0 +1,18 @@
+<Project>
+  <!-- Applied to all projects in the backend -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <AnalysisMode>Recommended</AnalysisMode>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <Deterministic>true</Deterministic>
+    <RootNamespace>VetFlow</RootNamespace>
+    <!-- CA1716: Identifiers should not match keywords (Shared, Error)
+         CA1000: Do not declare static members on generic types (Result<T>.Success)
+         CS1591: Missing XML comment -->
+    <NoWarn>CS1591;CA1716;CA1000;NU1903</NoWarn>
+  </PropertyGroup>
+</Project>

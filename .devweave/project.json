@@ -1,0 +1,15 @@
+{
+  "project": "VetFlow",
+  "version": "1.0",
+  "description": "Multi-tenant veterinary practice management SaaS platform",
+  "initialized": "2026-10-04T22:42:00+05:30",
+  "initializedBy": "Balaji Naik Mudavatu <balaji@vetflow.dev>",
+  "masterSpec": "ProjectDoc/VetFlow_Master_Specification_v1.0.md",
+  "topology": "monorepo",
+  "defaultBranch": "main",
+  "lifecycle": "AI-DLC v1.0",
+  "storyCount": 55,
+  "epics": ["R0-Foundation", "R1-Platform", "R2-Client", "R3-Scheduling", "R4-Clinical", "R5-Pharmacy", "R6-Diagnostics", "R7-Surgery", "R8-Billing-Inventory", "R9-Documents-Portal", "R10-Reporting-Production", "R11-AI-Readiness"],
+  "documentHierarchy": ["BRD", "PRD", "Business Workflows & Rules", "SDD", "Domain/DB", "API/Security", "Provider Policy", "Stories"],
+  "principle": "DevWeave decides what/why/context. Antigravity decides how to implement."
+}
