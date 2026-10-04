@@ -1,9 +1,10 @@
+using VetFlow.Api.Middleware;
 using VetFlow.Application;
 using VetFlow.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ─── Services ────────────────────────────────────────────────────────────────
+// ─── Core Services ───────────────────────────────────────────────────────────
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -16,12 +17,19 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// Register layer services
+// ─── Error Handling & Conventions ───────────────────────────────────────────
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
+// ─── Application Layers ──────────────────────────────────────────────────────
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
-// ─── Application Pipeline ───────────────────────────────────────────────────
+// ─── HTTP Pipeline ───────────────────────────────────────────────────────────
 var app = builder.Build();
+
+app.UseMiddleware<CorrelationIdMiddleware>();
+app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {
@@ -35,5 +43,4 @@ app.MapControllers();
 
 app.Run();
 
-// Marker class for WebApplicationFactory in integration tests
 public partial class Program { }
